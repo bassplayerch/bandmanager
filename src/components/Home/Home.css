@@ -1,0 +1,7 @@
+.homePage {
+    width: 100%;
+    background: #faf9f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

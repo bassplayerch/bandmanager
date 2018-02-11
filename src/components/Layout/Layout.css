@@ -1,0 +1,26 @@
+.app {
+    background: #1b9aaa;
+    height: 100vh;
+}
+
+.mainWrapper {
+    background: white;
+    max-width: 130rem;
+    height: 90vh;
+    margin: 0 auto;
+    position: relative;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .11);
+    top: 5vh;
+}
+
+.mainContainer {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+
+.container {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}

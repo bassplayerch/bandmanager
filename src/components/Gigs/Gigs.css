@@ -1,0 +1,27 @@
+.gigsContainer {
+    background: white;
+    width: 94%;
+    max-height: 93%;
+    align-self: flex-start;
+    margin-top: 4rem;
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .05);
+}
+
+.gigsContainer table {
+    border-collapse: collapse;
+    border: 1px solid #ebeaeb;
+    background: #1b9aaa;
+}
+
+.gigsContainer th {
+    background: #1b9aaa;
+    padding: 1rem 2rem;
+    font-weight: 400;
+    font-size: 1.8rem;
+    color: white;
+}
+
+.gigsContainer table {
+    width: 100%;
+    margin: 0 auto;
+}

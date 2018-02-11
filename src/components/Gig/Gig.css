@@ -1,0 +1,21 @@
+.gig {
+    padding: 2rem 0;
+    background: #f1f1f1;
+}
+
+.gig td {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.gig:nth-child(even) {
+    background: #dddddd;
+}
+
+.deleteIcon {
+    color: #d9534f;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+}
+
