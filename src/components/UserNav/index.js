@@ -4,7 +4,7 @@ import './UserNav.css';
 const userNav = props => {
   return (
     <div className="userNav">
-      <h1>user nav comes here</h1>
+      <h1>MYNAH</h1>
     </div>
   );
 };

@@ -19,3 +19,12 @@
     cursor: pointer;
 }
 
+.changeIcon {
+    color: #033b08;
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+}
+.changeIcon:hover {
+    background: grey;
+}

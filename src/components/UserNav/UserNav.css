@@ -2,4 +2,7 @@
     background: white;
     border-bottom: 1px solid #f1f1f1;
     flex: 0 0 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

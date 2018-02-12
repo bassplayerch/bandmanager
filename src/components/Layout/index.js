@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Navigation from "../Navigation";
 import LandingPage from "../Landing";
 import SignUpPage from "../SignUp";
@@ -7,6 +7,8 @@ import SignInPage from "../SignIn";
 import PasswordForgetPage from "../PasswordForget";
 import HomePage from "../Home";
 import UserNav from "../UserNav";
+import EditGigPage from "../EditGigPage";
+import Locations from "../Locations";
 import MainNav from "../MainNav";
 import AccountPage from "../Account";
 import withAuthentication from "../Session/withAuthentication";
@@ -23,12 +25,18 @@ const Layout = (props, { authUser }) => {
         <div className="container">
           <MainNav />
           <Route exact path={routes.LANDING} component={() => <HomePage />} />
+          <Route exact path={routes.LOCATIONS} component={() => <Locations />} />
+          <Route exact path={routes.GIG} component={() => <EditGigPage />} />
+
         </div>
       </div>
     );
   } else {
     content = (
-      <Route exact path={routes.LANDING} component={() => <LandingPage />} />
+      <div>
+        <Route exact path={routes.LANDING} component={() => <LandingPage />} />
+        <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
+      </div>
     );
   }
 
@@ -43,9 +51,6 @@ Layout.contextTypes = {
   authUser: PropTypes.object
 };
 
-const NavigationAuth = () => <h1>signed in</h1>;
-
-const NavigationNonAuth = () => <h1>signed out</h1>;
 
 export default Layout;
 

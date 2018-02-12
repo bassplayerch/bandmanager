@@ -1,6 +1,5 @@
 import React from "react";
 import './Gig.css';
-import Aux from "../../hoc/Aux";
 
 const gig = props => {
     return (
@@ -9,6 +8,7 @@ const gig = props => {
                 <td>{props.time}</td>
                 <td>{props.location}</td>
                 <td>{props.comments}</td>
+                <td><span onClick={props.editClickHandler} className="changeIcon">edit</span></td>
                 <td><span onClick={props.clickHandler} className="deleteIcon">x</span></td>
           
 

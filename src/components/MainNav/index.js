@@ -8,7 +8,7 @@ const mainNav = () => {
     <div className="mainNav">
       <div className="navLinks">
         <Link className="link" to={routes.LANDING}>Gigs</Link>
-        <Link className="link" to={routes.LANDING}>Locations</Link>
+        <Link className="link" to={routes.LOCATIONS}>Locations</Link>
       </div>
     </div>
   );

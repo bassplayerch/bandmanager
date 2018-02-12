@@ -9,7 +9,7 @@
     height: 90vh;
     margin: 0 auto;
     position: relative;
-    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .11);
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, .2);
     top: 5vh;
 }
 
