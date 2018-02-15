@@ -6,10 +6,10 @@ import SignUpPage from "../SignUp";
 import SignInPage from "../SignIn";
 import PasswordForgetPage from "../PasswordForget";
 import HomePage from "../Home";
-import UserNav from "../UserNav";
-import EditGigPage from "../EditGigPage";
-import Locations from "../Locations";
-import MainNav from "../MainNav";
+import UserNav from "../../modules/user-nav/UserNav/UserNav";
+import EditGigPage from "./../../modules/gig-page/EditGigPage/EditGigPage";
+import Locations from "../../modules/location-page/Locations/Locations";
+import MainNav from "../../modules/main-nav/MainNav/MainNav";
 import AccountPage from "../Account";
 import withAuthentication from "../Session/withAuthentication";
 import * as routes from "../../constants/routes";
@@ -25,9 +25,12 @@ const Layout = (props, { authUser }) => {
         <div className="container">
           <MainNav />
           <Route exact path={routes.LANDING} component={() => <HomePage />} />
-          <Route exact path={routes.LOCATIONS} component={() => <Locations />} />
+          <Route
+            exact
+            path={routes.LOCATIONS}
+            component={() => <Locations />}
+          />
           <Route exact path={routes.GIG} component={() => <EditGigPage />} />
-
         </div>
       </div>
     );
@@ -36,6 +39,7 @@ const Layout = (props, { authUser }) => {
       <div>
         <Route exact path={routes.LANDING} component={() => <LandingPage />} />
         <Route exact path={routes.SIGN_IN} component={() => <SignInPage />} />
+        <Route exact path={routes.SIGN_UP} component={() => <SignUpPage />} />
       </div>
     );
   }
@@ -50,7 +54,6 @@ const Layout = (props, { authUser }) => {
 Layout.contextTypes = {
   authUser: PropTypes.object
 };
-
 
 export default Layout;
 

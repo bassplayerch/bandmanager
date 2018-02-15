@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Home.css";
-import Gigs from './../Gigs';
+import Gigs from './../../modules/gig-page/Gigs/Gigs';
 
 import withAuthorization from "../Session/withAuthorization";
 import { db } from "../../firebase";

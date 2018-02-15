@@ -1,11 +1,16 @@
 import React, { Component } from "react";
-import "./Gigs.css";
-import Fab from "./../Fab";
-import Gig from "./../Gig";
-import { addGig, onceGetGigs, getGigsRef, deleteGig } from "../../firebase/db";
+import Fab from "./../../../components/Fab/Fab";
+import Gig from "./../Gig/Gig";
+import ContentContainer from "./../../../layout/ContentContainer/ContentContainer";
+import GigsTable from './GigsTable';
+import {
+  getGigsRef,
+  deleteGig,
+  getLocation
+} from "../../../firebase/db";
 import Popup from "react-popup";
-import { Link, withRouter } from "react-router-dom";
-import * as routes from "./../../constants/routes";
+import { withRouter } from "react-router-dom";
+import * as routes from "./../../../constants/routes";
 
 class Gigs extends Component {
   state = {
@@ -59,16 +64,21 @@ class Gigs extends Component {
       let allGigs = data.val();
       let gigArr = [];
       Object.keys(allGigs).forEach(gig => {
-        gigArr.push({
-          id: gig,
-          bandname: allGigs[gig].bandName,
-          time: allGigs[gig].time,
-          date: allGigs[gig].date,
-          location: allGigs[gig].location,
-          comments: allGigs[gig].comments
-        });
+        getLocation(allGigs[gig].location)
+          .once("value")
+          .then(d => {
+            let loc = d.val() ? d.val().name : "location deleted";
+            gigArr.push({
+              id: gig,
+              bandname: allGigs[gig].bandName,
+              time: allGigs[gig].startTime + " - " + allGigs[gig].endTime || "",
+              date: allGigs[gig].date,
+              location: loc,
+              comments: allGigs[gig].comments
+            });
+            this.setState({ gigs: gigArr, loading: false });
+          });
       });
-      this.setState({ gigs: gigArr, loading: false });
     });
   };
 
@@ -82,7 +92,7 @@ class Gigs extends Component {
           date={gig.date}
           comments={gig.comments}
           editClickHandler={this.handleEditClick.bind(this, gig.id)}
-          clickHandler={this.deleteGigHandler.bind(this, gig.id)}
+          deleteClickHandler={this.deleteGigHandler.bind(this, gig.id)}
         />
       );
     });
@@ -90,25 +100,15 @@ class Gigs extends Component {
       return <h1>LOADING</h1>;
     } else {
       return (
-        <div className="gigsContainer">
+        <ContentContainer>
+          <GigsTable>
+            <tbody>{gigs}</tbody>
+          </GigsTable>
           <Fab clickHandler={this.onAddGigHandler}>
             <i className="material-icons">note_add</i>
           </Fab>
-          <table>
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Time</th>
-                <th>Location</th>
-                <th>Comments</th>
-                <th />
-                <th />
-              </tr>
-            </thead>
-            <tbody>{gigs}</tbody>
-          </table>
           <Popup />
-        </div>
+        </ContentContainer>
       );
     }
   }
