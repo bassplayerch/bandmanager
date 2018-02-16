@@ -5,7 +5,6 @@ const GigsTable = styled.table`
   width: 100%;
   margin: 0 auto;
   border-collapse: collapse;
-  border: 1px solid ${props => props.theme.colorGreyLight};
   background: ${props => props.theme.colorPrimary};
   & th {
     background: ${props => props.theme.colorPrimary};

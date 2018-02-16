@@ -9,8 +9,8 @@ const TextButton = styled.a`
   font-weight: 400;
   cursor: pointer;
   &:hover {
+    border-bottom: 1px solid currentColor;
     font-weight: bold;
-    border-bottom: 1x solid currentColor;
   }
 `;
 

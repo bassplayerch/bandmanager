@@ -22,7 +22,7 @@ const theme = {
   colorSuccess: "#306330",
   colorDanger: "#d9534f",
   boxShadowMedium: "0 1rem 3rem rgba(0,0,0,.2)",
-  boxShadowLight: "0 2rem 4rem rgba(0, 0, 0, .05)"
+  boxShadowLight: "0 2rem 4rem rgba(0, 0, 0, .1)"
 };
 theme.colorPrimaryLight = lighten(0.1, theme.colorPrimary);
 theme.colorPrimaryDark = darken(0.08, theme.colorPrimary);
