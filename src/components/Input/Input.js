@@ -4,7 +4,7 @@ import propTypes from "prop-types";
 
 const Input = styled.input`
   width: 100%;
-  height: 3rem;
+  height: 4rem;
   font-family: inherit;
   font-size: 1.6rem;
   background-color: transparent;

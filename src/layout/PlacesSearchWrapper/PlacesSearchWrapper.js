@@ -9,7 +9,7 @@ const PlacesSearchWrapper = styled.div`
   position: relative;
   .search-input {
     width: 100%;
-    height: 3rem;
+    height: 4rem;
     font-family: inherit;
     font-size: 1.6rem;
     background-color: transparent;
