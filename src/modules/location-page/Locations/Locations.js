@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
+import Fab from "./../../../components/Fab/Fab";
+import Popup from "react-popup";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
@@ -10,10 +12,16 @@ import PlacesSearchWrapper from "./../../../layout/PlacesSearchWrapper/PlacesSea
 import InputField from "./../../../components/InputField/InputField";
 import Button from "./../../../components/Button/Button";
 import MultiSelect from "./../../../components/MultiSelect/MultiSelect";
-import { addLocation, getLocations } from "../../../firebase/db";
+import {
+  addLocation,
+  getLocations,
+  deleteLocation,
+  updateLocation
+} from "../../../firebase/db";
 
 class Locations extends Component {
   state = {
+    editMode: false,
     name: "",
     lat: "",
     lng: "",
@@ -44,6 +52,10 @@ class Locations extends Component {
 
   onLocationAdded = e => {
     e.preventDefault();
+    if (!this.state.name){
+      alert('please enter a name');
+      return;
+    }
     const newLocation = {
       name: this.state.name,
       lat: this.state.lat,
@@ -57,9 +69,23 @@ class Locations extends Component {
       state: this.state.state,
       stateCode: this.state.stateCode
     };
-    addLocation(newLocation)
-      .then(() => console.log("location added"))
-      .catch(err => console.log("error while adding the location", err));
+    if (this.state.editMode) {
+      updateLocation(this.state.selectedOption.value, newLocation)
+        .then(() => {
+          console.log("location updated");
+          this.resetForm();
+          this.setState({ editMode: false, selectedOption: "" });
+        })
+        .catch(err => console.log("error while updating location", err));
+    } else {
+      addLocation(newLocation)
+        .then(() => {
+          console.log("location added");
+          this.resetForm();
+          this.setState({ selectedOption: "" });
+        })
+        .catch(err => console.log("error while adding the location", err));
+    }
   };
 
   onValueChange = e => {
@@ -133,7 +159,61 @@ class Locations extends Component {
   };
 
   onChangeLocation = selectedOption => {
-    this.setState({ selectedOption });
+    if (!selectedOption) {
+      this.deleteLocation(this.state.selectedOption.value, this);
+      return;
+    }
+    this.setState({ selectedOption, editMode: true });
+    this.setInputFields(selectedOption.value);
+  };
+
+  deleteLocation = (id, that) => {
+    Popup.create({
+      title: null,
+      content:
+        "Do you really want to delete this location? This change cannot be reverted and gigs using this location will have an undefined location",
+      buttons: {
+        left: [
+          {
+            text: "Cancel",
+            className: "success",
+            action: function() {
+              Popup.close();
+            }
+          }
+        ],
+        right: [
+          {
+            text: "Delete",
+            className: "danger",
+            action: function() {
+              deleteLocation(id)
+                .then(() => {
+                  console.log("location deleted");
+                  that.resetForm();
+                  that.setState({ selectedOption: "" });
+                })
+                .catch(err =>
+                  console.log("error while deleting location", err)
+                );
+              Popup.close();
+            }
+          }
+        ]
+      }
+    });
+  };
+
+  setInputFields = id => {
+    const newLocation = this.state.locations.filter(loc => loc.id === id)[0];
+    Object.keys(newLocation).forEach(loc => {
+      this.setState({ [loc]: newLocation[loc] });
+    });
+  };
+
+  onNewLocationClicked = () => {
+    this.resetForm();
+    this.setState({ editMode: false, selectedOption: "" });
   };
 
   render() {
@@ -218,6 +298,10 @@ class Locations extends Component {
             Submit
           </Button>
         </form>
+        <Fab clickHandler={this.onNewLocationClicked}>
+          <i className="material-icons">note_add</i>
+        </Fab>
+        <Popup />
       </ContentContainer>
     );
   }

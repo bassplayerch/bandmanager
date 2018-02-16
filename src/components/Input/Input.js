@@ -31,6 +31,7 @@ const input = props => {
         name={props.name}
         onChange={props.onChange}
         placeholder=" "
+        pattern={props.pattern}
       />
   );
 };
@@ -39,6 +40,7 @@ input.propTypes = {
   value: propTypes.str,
   onChange: propTypes.func,
   name: propTypes.string,
+  pattern: propTypes.pattern
 };
 
 export default input;

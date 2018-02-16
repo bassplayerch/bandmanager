@@ -1,0 +1,25 @@
+.DayPickerInput {
+    width: 100%;
+    display: block;
+}
+
+.DayPickerInput>input {
+    width: 100%;
+    height: 3rem;
+    font-family: inherit;
+    font-size: 1.6rem;
+    background-color: transparent;
+    padding: 1rem 1rem;
+    border: none;
+    display: block;
+    border-bottom: 1px solid #dddddd;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+
+.DayPickerInput-OverlayWrapper {
+    display: block;
+    position: relative;
+    z-index: 999;
+    top: -10rem;
+}

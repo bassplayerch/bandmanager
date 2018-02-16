@@ -6,7 +6,7 @@ import {darken} from 'polished'
 const DeleteIcon = styled.span`
   color: ${props => props.theme.colorDanger};
   font-weight: bold;
-  display: block;
+  display: inline-block;
   cursor: pointer;
   &:hover {
     color: ${(props) => darken(0.2, props.theme.colorDanger)};
