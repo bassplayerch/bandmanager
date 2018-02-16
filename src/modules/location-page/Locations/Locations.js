@@ -34,6 +34,8 @@ class Locations extends Component {
     zipCode: "",
     state: "",
     stateCode: "",
+    website: "",
+    contactPerson: "",
     selectedOption: "",
     locations: []
   };
@@ -52,8 +54,8 @@ class Locations extends Component {
 
   onLocationAdded = e => {
     e.preventDefault();
-    if (!this.state.name){
-      alert('please enter a name');
+    if (!this.state.name) {
+      alert("please enter a name");
       return;
     }
     const newLocation = {
@@ -67,7 +69,9 @@ class Locations extends Component {
       countryCode: this.state.countryCode,
       zipCode: this.state.zipCode,
       state: this.state.state,
-      stateCode: this.state.stateCode
+      stateCode: this.state.stateCode,
+      website: this.state.website,
+      contactPerson: this.state.contactPerson
     };
     if (this.state.editMode) {
       updateLocation(this.state.selectedOption.value, newLocation)
@@ -124,7 +128,9 @@ class Locations extends Component {
       countryCode: "",
       zipCode: "",
       state: "",
-      stateCode: ""
+      stateCode: "",
+      website: "",
+      contactPerson: ""
     });
   }
 
@@ -292,6 +298,18 @@ class Locations extends Component {
             onChange={this.onValueChange.bind(this)}
             label="State Abbreviation"
             name="stateCode"
+          />
+          <InputField
+            value={this.state.website}
+            onChange={this.onValueChange.bind(this)}
+            label="Website"
+            name="website"
+          />
+          <InputField
+            value={this.state.contactPerson}
+            onChange={this.onValueChange.bind(this)}
+            label="Contact Person"
+            name="contactPerson"
           />
 
           <Button block type="submit">
