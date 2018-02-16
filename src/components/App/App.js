@@ -17,6 +17,7 @@ const theme = {
   colorPrimary: "#BB2F3D",
   colorGreyLight: "#faf9f9",
   colorGreyMedium: "#dddddd",
+  colorGreyMediumDark: "#848484",
   colorWhite: "#ffffff",
   colorSecondary: "#333333",
   colorSuccess: "#306330",
@@ -33,7 +34,6 @@ class App extends Component {
     authUser: false
   };
   componentDidMount() {
-    console.log(this.props);
   }
 
   render() {

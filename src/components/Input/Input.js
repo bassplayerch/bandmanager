@@ -24,9 +24,21 @@ const Input = styled.input`
 `;
 
 const input = props => {
-  return <Input onChange={props.onChange} placeholder=" " />;
+  return (
+      <Input
+        value={props.value}
+        isRequired={props.isRequired}
+        name={props.name}
+        onChange={props.onChange}
+        placeholder=" "
+      />
+  );
 };
 
-input.propTypes = {};
+input.propTypes = {
+  value: propTypes.str,
+  onChange: propTypes.func,
+  name: propTypes.string,
+};
 
 export default input;

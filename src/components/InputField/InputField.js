@@ -20,15 +20,18 @@ const InputField = styled.div`
 const inputField = props => {
   return (
     <InputField>
-      <Input onChange={props.onChange}/>
-      <Label>{props.label}</Label>
+      <Input name={props.name} value={props.value} onChange={props.onChange} />
+      <Label isRequired={props.isRequired}>{props.label}</Label>
     </InputField>
   );
 };
 
 inputField.propTypes = {
   label: propTypes.string,
-  onChange: propTypes.func
+  onChange: propTypes.func,
+  value: propTypes.string,
+  name: propTypes.string,
+  isRequired: propTypes.bool
 };
 
 export default inputField;
