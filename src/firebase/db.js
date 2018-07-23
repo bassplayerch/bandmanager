@@ -1,4 +1,5 @@
 import { db } from "./firebase";
+import * as axios from 'axios';
 
 // User API
 
@@ -22,7 +23,7 @@ export const updateLocation = (id, data) => {
   return db.ref("locations/" + id).update(data);
 };
 
-export const getLocations= () => db.ref("locations");
+export const getLocations = () => db.ref("locations");
 
 export const getLocation = id => db.ref("locations/" + id);
 
@@ -33,3 +34,12 @@ export const deleteLocation = id => db.ref("/locations/" + id).remove();
 export const onceGetUsers = () => db.ref("users").once("value");
 
 export const onceGetGigs = () => db.ref("gigs").once("value");
+
+export const uploadSong = (file, id) => {
+  let data = new FormData()
+  data.append('file', file, `${id}.mp3`);
+
+  axios.post('https://mynah-stories.herokuapp.com/upload', data)
+}
+
+export const getStories = () => db.ref('stories');

@@ -9,6 +9,7 @@ const mainNav = () => {
       <div className="navLinks">
         <NavLink exact activeStyle={{background:'#BB2F3D'}} className="link" to={routes.LANDING}>Gigs</NavLink>
         <NavLink exact activeStyle={{background:'#BB2F3D'}} className="link" to={routes.LOCATIONS}>Locations</NavLink>
+        <NavLink exact activeStyle={{background:'#BB2F3D'}} className="link" to={routes.STORIES}>Stories</NavLink>
       </div>
     </div>
   );

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import propTypes from "prop-types";
 import Label from "../Label/Label";
 import Input from "../Input/Input";
 
@@ -26,13 +25,5 @@ const inputField = props => {
   );
 };
 
-inputField.propTypes = {
-  label: propTypes.string,
-  onChange: propTypes.func,
-  value: propTypes.string,
-  name: propTypes.string,
-  isRequired: propTypes.bool,
-  pattern: propTypes.string
-};
 
 export default inputField;

@@ -9,6 +9,7 @@ import HomePage from "../Home";
 import UserNav from "../../modules/user-nav/UserNav/UserNav";
 import EditGigPage from "./../../modules/gig-page/EditGigPage/EditGigPage";
 import Locations from "../../modules/location-page/Locations/Locations";
+import Stories from "../../modules/stories-page/Stories/Stories";
 import MainNav from "../../modules/main-nav/MainNav/MainNav";
 import AccountPage from "../Account";
 import withAuthentication from "../Session/withAuthentication";
@@ -25,6 +26,7 @@ const Layout = (props, { authUser }) => {
         <div className="container">
           <MainNav />
           <Route exact path={routes.LANDING} component={() => <HomePage />} />
+          <Route exact path={routes.STORIES} component={() => <Stories />} />
           <Route
             exact
             path={routes.LOCATIONS}

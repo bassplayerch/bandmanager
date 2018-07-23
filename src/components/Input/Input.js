@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import propTypes from "prop-types";
 
 const Input = styled.input`
   width: 100%;
@@ -36,11 +35,5 @@ const input = props => {
   );
 };
 
-input.propTypes = {
-  value: propTypes.str,
-  onChange: propTypes.func,
-  name: propTypes.string,
-  pattern: propTypes.pattern
-};
 
 export default input;
