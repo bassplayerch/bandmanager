@@ -40,6 +40,8 @@ export const uploadSong = (file, id) => {
   data.append('file', file, `${id}.mp3`);
 
   axios.post('https://mynah-stories.herokuapp.com/upload', data)
+    .then(res => alert('song uploaded'))
+    .catch(err => alert('error uploading song'))
 }
 
 export const getStories = () => db.ref('stories');
